@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Con este import, Tailwind hace lo siguiente: */
+/* 
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities); 
+*/
+
+:root {
+  --title-color: rgb(88, 88, 170);
+}
+
+@layer base {
+  html {
+    scrollbar-width: thin;
+  }
+  
+  :is(h1, h2, h3, h4, h5) {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
