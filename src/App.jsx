@@ -6,9 +6,11 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <div className="flex flex-col h-dvh">
+        <Header />
+        <Main />
+        <Footer />
+      </div>
     </>
   );
 }
