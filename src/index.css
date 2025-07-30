@@ -8,10 +8,6 @@
 @import "tailwindcss/utilities.css" layer(utilities); 
 */
 
-:root {
-  --title-color: rgb(88, 88, 170);
-}
-
 @layer base {
   html {
     scrollbar-width: thin;
@@ -29,4 +25,3 @@
     cursor: pointer;
   }
 }
-
