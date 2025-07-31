@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { Container } from "../container/Container";
 
-export const Header = () => {
-  const [isAdding, setIsAdding] = useState(false);
-  const [newTask, setNewTask] = useState("");
+export const Header = ({newTask, setNewTask, addTask, isAdding, setIsAdding}) => {
 
   return (
     <header className="py-4">
@@ -29,9 +26,12 @@ export const Header = () => {
                 className="w-full border-2 border-indigo-900 rounded-2xl px-2 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-600"
                 type="text"
                 placeholder="Write a task..."
+                onChange={(e) => setNewTask(e.target.value)}
+                value={newTask}
               />
             </div>
             <button
+              onClick={addTask}
             ><img src="/check.svg" alt="icon check" /></button>
           </>
           }

@@ -1,9 +1,12 @@
-import React from 'react'
+import { Container } from "../container/Container"
+import { TaskList } from "../taskList/TaskList"
 
 export const Main = () => {
   return (
     <main className='flex-1 overflow-auto'>
-      <h2>tareas</h2>
+      <Container>
+        <TaskList />
+      </Container>
     </main>
   )
 }
