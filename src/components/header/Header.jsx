@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header className="py-4">
       <Container>
-        <div className="flex justify-between items-center min-h-10">
+        <div className="flex justify-between items-center gap-3 min-h-10">
           {!isAdding ? 
           <>
             <h1 className="text-2xl font-bold">MyTasks</h1>
@@ -24,10 +24,11 @@ export const Header = () => {
             <button
               onClick={() => setIsAdding(false)}
             ><img src="/close.svg" alt="icon close" /></button>
-            <div>
+            <div className="w-full max-w-100">
               <input
-                className="bg-orange-50"
+                className="w-full border-2 border-indigo-900 rounded-2xl px-2 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-600"
                 type="text"
+                placeholder="Write a task..."
               />
             </div>
             <button
