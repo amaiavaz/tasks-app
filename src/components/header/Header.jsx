@@ -1,11 +1,12 @@
 import { Container } from "../container/Container";
 
 export const Header = ({newTask, setNewTask, addTask, isAdding, setIsAdding}) => {
+  const maxLength = 20;
 
   return (
     <header className="py-4">
       <Container>
-        <div className="flex justify-between items-center gap-3 min-h-10">
+        <div className="flex justify-between items-start gap-3 min-h-14">
           {!isAdding ? 
           <>
             <h1 className="text-2xl font-bold">MyTasks</h1>
@@ -28,7 +29,9 @@ export const Header = ({newTask, setNewTask, addTask, isAdding, setIsAdding}) =>
                 placeholder="Write a task..."
                 onChange={(e) => setNewTask(e.target.value)}
                 value={newTask}
+                maxLength={maxLength}
               />
+              <p className="text-sm text-indigo-700 text-right mr-3">{newTask.length}/{maxLength}</p>
             </div>
             <button
               onClick={addTask}
