@@ -24,7 +24,7 @@ function App() {
           isAdding={isAdding}
           setIsAdding={setIsAdding}
         />
-        <Main />
+        <Main tasks={tasks}/>
         <Footer />
       </div>
     </>
