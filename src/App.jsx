@@ -32,6 +32,10 @@ function App() {
     }
   }
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  }
+
   return (
     <>
       <div className="flex flex-col h-dvh">
@@ -43,7 +47,10 @@ function App() {
           isAdding={isAdding}
           setIsAdding={setIsAdding}
         />
-        <Main tasks={tasks}/>
+        <Main 
+          tasks={tasks}
+          deleteTask={deleteTask}
+        />
         <Footer />
       </div>
     </>
