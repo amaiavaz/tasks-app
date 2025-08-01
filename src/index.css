@@ -10,6 +10,7 @@
 
 :root {
   --base-color: rgb(255, 177, 146);
+  --baselight-color: rgb(255, 225, 214);
 }
 
 @layer base {
@@ -41,6 +42,11 @@
     border: 2px solid oklch(35.9% 0.144 278.697);
     border-radius: 20px;
     font-weight: 700;
+
+    &:hover {
+      background-color: oklch(35.9% 0.144 278.697);
+      color: var(--base-color);
+    }
   }
 
   .divider {
