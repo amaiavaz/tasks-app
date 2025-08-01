@@ -3,15 +3,33 @@ import { Footer } from "./components/footer/Footer";
 import { Header } from "./components/header/Header";
 import { Main } from "./components/main/Main";
 
+const initialTask = {
+  id: "",
+  title: "",
+  subtasks: []
+}
+
 function App() {
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState(initialTask);
   const [tasks, setTasks] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
 
-  const addTask = () => {
-    setTasks([...tasks, newTask]);
-    setNewTask("");
+  const handleInput = (e) => {
+    const {value, name} = e.target;
+    setNewTask({...newTask, [name]: value});
+  }
+
+  const cancelTask = () => {
+    setNewTask(initialTask);
     setIsAdding(false);
+  }
+
+  const addTask = () => {
+    if (newTask.title) {
+      setTasks([...tasks, {id: Date.now(), title: newTask.title, subtasks: []}]);
+      setNewTask(initialTask);
+      setIsAdding(false);
+    }
   }
 
   return (
@@ -19,7 +37,8 @@ function App() {
       <div className="flex flex-col h-dvh">
         <Header 
           newTask={newTask}
-          setNewTask={setNewTask}
+          handleInput={handleInput}
+          cancelTask={cancelTask}
           addTask={addTask}
           isAdding={isAdding}
           setIsAdding={setIsAdding}
