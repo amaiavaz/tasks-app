@@ -3,7 +3,7 @@ import { Container } from "../container/Container"
 import { TaskList } from "../taskList/TaskList"
 import { SubtaskList } from "../subtaskList/SubtaskList";
 
-export const Main = ({tasks, deleteTask}) => {
+export const Main = ({tasks, deleteTask, updateTask}) => {
   const [selectedTaskId, setSelectedTaskId] = useState(null);
   const selectedTask = tasks.find(task => task.id === selectedTaskId);
 
@@ -20,6 +20,7 @@ export const Main = ({tasks, deleteTask}) => {
           <SubtaskList
             setSelectedTaskId={setSelectedTaskId}
             task={selectedTask}
+            updateTask={updateTask}
           />
         }
       </Container>

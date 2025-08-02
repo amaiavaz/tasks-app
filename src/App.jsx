@@ -31,6 +31,12 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id));
   }
 
+  const updateTask = (updatedTask) => {
+    setTasks(tasks.map((task) => {
+      return task.id === updatedTask.id ? updatedTask : task
+    }));
+  }
+
   return (
     <>
       <div className="flex flex-col h-dvh">
@@ -42,6 +48,7 @@ function App() {
         <Main 
           tasks={tasks}
           deleteTask={deleteTask}
+          updateTask={updateTask}
         />
         <Footer />
       </div>

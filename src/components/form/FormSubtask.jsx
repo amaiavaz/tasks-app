@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const initialValues = {
-  title: "",
+  name: "",
   quantity: 0
 }
 
@@ -17,6 +17,7 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
     e.preventDefault();
     addSubtask(newSubtask);
     setNewSubtask(initialValues);
+    console.log(newSubtask);
   }
 
   return (
@@ -27,15 +28,15 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
           id='newItem'
           className='bg-amber-50 rounded-2xl p-1' 
           type="text"
-          name="title"
-          value={newSubtask.title}
+          name="name"
+          value={newSubtask.name}
           onChange={handleChange}
         />
       </div>
       <div className='flex flex-col items-center gap-1 text-[1.15rem]'>
         <label htmlFor="quantity" className='font-bold'>Quantity</label>
         <div className='space-x-4'>
-          <button className='font-bold text-3xl'>+</button>
+          <button className='font-bold text-3xl'>-</button>
           <input
             id='quantity'
             className='bg-amber-50 w-10 rounded-2xl p-1 text-center [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [appearance:textfield]'
@@ -45,19 +46,19 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
             value={newSubtask.quantity}
             onChange={handleChange}
           />
-          <button className='font-bold text-3xl'>-</button>
+          <button className='font-bold text-3xl'>+</button>
         </div>
       </div>
       <div className='flex justify-between px-8'>
-        <button 
-          className='btn'
-          onClick={onSubmit}
-        >Add</button>
         <button
           className='btn'
           onClick={() => setShowForm(false)}
           type="button"
         >Cancel</button>
+        <button 
+          className='btn'
+          onClick={onSubmit}
+        >Add</button>
       </div>
     </form>
   )
