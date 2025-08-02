@@ -1,8 +1,19 @@
 import { useState } from 'react'
 import { FormSubtask } from '../form/FormSubtask'
 
+const initialValues = {
+  title: "",
+  quantity: 0
+}
+
 export const SubtaskList = ({setSelectedTaskId}) => {
   const [showForm, setShowForm] = useState(true);
+  const [newSubtask, setNewSubtask] = useState(initialValues);
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setNewSubtask({...newSubtask, [name]: value});
+  }
 
   return (
     <div className='space-y-4'>
@@ -18,7 +29,10 @@ export const SubtaskList = ({setSelectedTaskId}) => {
       </div>
       {showForm &&
         <div className='mx-auto'>
-          <FormSubtask />
+          <FormSubtask 
+            newSubtask={newSubtask}
+            handleChange={handleChange}
+          />
         </div>
       }
       <ul className='space-y-3 py-3 mx-auto w-full max-w-110 rounded-3xl bg-[var(--baselight-color)]'>
@@ -26,6 +40,7 @@ export const SubtaskList = ({setSelectedTaskId}) => {
           <div className='flex w-full items-center justify-between px-5 py-2'>
             <p className='font-semibold'>limpiar baño</p>
             <div className='flex justify-center gap-6'>
+              <p className='font-semibold'>1</p>
               <button className='font-semibold'>OK</button>
               <button
                 
