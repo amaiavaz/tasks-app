@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FormSubtask } from '../form/FormSubtask'
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
   const [showForm, setShowForm] = useState(false);
@@ -22,14 +23,23 @@ export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
           onClick={() => setShowForm(true)}
         >New item</button>
       </div>
-      {showForm &&
-        <div className='mx-auto'>
-          <FormSubtask 
-            setShowForm={setShowForm}
-            addSubtask={addSubtask}
-          />
-        </div>
-      }
+      <AnimatePresence>
+        {showForm &&
+          <motion.div
+            key="form-subtask"
+            className='mx-auto'
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <FormSubtask 
+              setShowForm={setShowForm}
+              addSubtask={addSubtask}
+            />
+          </motion.div>
+        }
+      </AnimatePresence>
       <ul className='space-y-3 py-3 mx-auto w-full max-w-110 rounded-3xl bg-[var(--baselight-color)]'>
         {task.subtasks?.map((elem) => {
           return(
