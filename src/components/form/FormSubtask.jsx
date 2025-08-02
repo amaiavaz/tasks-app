@@ -2,7 +2,9 @@ import { useState } from "react";
 
 const initialValues = {
   name: "",
-  quantity: 0
+  quantity: 0,
+  id: "",
+  isDone: false
 }
 
 export const FormSubtask = ({setShowForm, addSubtask}) => {
@@ -15,9 +17,10 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addSubtask(newSubtask);
+    const dataSubtask = {...newSubtask, id: Date.now()};
+    addSubtask(dataSubtask);
     setNewSubtask(initialValues);
-    console.log(newSubtask);
+    console.log(dataSubtask);
   }
 
   return (
