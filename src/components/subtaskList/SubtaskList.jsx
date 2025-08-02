@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FormSubtask } from '../form/FormSubtask'
 
 export const SubtaskList = ({setSelectedTaskId}) => {
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   return (
     <div className='space-y-4'>
@@ -17,7 +17,7 @@ export const SubtaskList = ({setSelectedTaskId}) => {
         >New item</button>
       </div>
       {showForm &&
-        <div>
+        <div className='mx-auto'>
           <FormSubtask />
         </div>
       }
