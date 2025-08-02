@@ -11,13 +11,26 @@ export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
     console.log(updatedTask);
   }
 
+  const deleteSubtask = (id) => {
+    const filteredSubtasks = task.subtasks.filter(sub => sub.id !== id);
+    updateTask({...task, subtasks: filteredSubtasks});
+    console.log(filteredSubtasks);
+  }
+
+  const toggleDone = (id) => {
+    const updatedSubtasks = task.subtasks.map(sub => 
+      sub.id === id ? { ...sub, isDone: !sub.isDone } : sub);
+    updateTask({...task, subtasks: updatedSubtasks});
+  }
+
   return (
     <div className='space-y-4'>
-      <div className='flex justify-between'>
+      <div className='flex justify-between items-center'>
         <button 
           className='btn'
           onClick={() => setSelectedTaskId(false)}
         >Back</button>
+        <p className='text-2xl'>{task.title}</p>
         <button 
           className='btn'
           onClick={() => setShowForm(true)}
@@ -45,15 +58,18 @@ export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
           return(
             <li
               key={elem.id}
-              className='border-b-1 max-w-100 mx-auto'
+              className={`max-w-100 mx-auto ${elem.isDone ? '' : 'border-b-1'}`}
             >
-              <div className='flex w-full items-center justify-between px-5 py-2'>
-                <p className='font-semibold'>{elem.name}</p>
+              <div className={`flex w-full items-center justify-between px-5 py-2 ${elem.isDone ? 'text-gray-400' : ''}`}>
+                <p className={`font-semibold ${elem.isDone ? 'line-through text-gray-400' : ''}`}>{elem.name}</p>
                 <div className='flex justify-center gap-6'>
                   <p className='font-semibold'>{elem.quantity}</p>
-                  <button className='font-semibold'>OK</button>
+                  <button 
+                    className='font-semibold'
+                    onClick={() => toggleDone(elem.id)}
+                  >OK</button>
                   <button
-                    
+                    onClick={() => deleteSubtask(elem.id)}
                   ><img src="/detele.svg" alt="delete" /></button>
                 </div>
               </div>

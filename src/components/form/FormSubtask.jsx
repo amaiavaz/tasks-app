@@ -15,6 +15,14 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
     setNewSubtask({...newSubtask, [name]: value});
   }
 
+  const addOne = () => {
+    setNewSubtask({...newSubtask, quantity: newSubtask.quantity + 1});
+  }
+
+  const substractOne = () => {
+    if (newSubtask.quantity > 0) setNewSubtask({...newSubtask, quantity: newSubtask.quantity - 1});
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
     const dataSubtask = {...newSubtask, id: Date.now()};
@@ -39,7 +47,11 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
       <div className='flex flex-col items-center gap-1 text-[1.15rem]'>
         <label htmlFor="quantity" className='font-bold'>Quantity</label>
         <div className='space-x-4'>
-          <button className='font-bold text-3xl'>-</button>
+          <button 
+            className='font-bold text-3xl'
+            onClick={substractOne}
+            type="button"
+          >-</button>
           <input
             id='quantity'
             className='bg-amber-50 w-10 rounded-2xl p-1 text-center [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [appearance:textfield]'
@@ -49,7 +61,11 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
             value={newSubtask.quantity}
             onChange={handleChange}
           />
-          <button className='font-bold text-3xl'>+</button>
+          <button 
+            className='font-bold text-3xl'
+            onClick={addOne}
+            type="button"
+          >+</button>
         </div>
       </div>
       <div className='flex justify-between px-8'>
