@@ -32,7 +32,7 @@ export const FormSubtask = ({setShowForm, addSubtask}) => {
   }
 
   return (
-    <form className='mx-auto space-y-5 p-6 bg-indigo-300 w-full max-w-110 rounded-3xl'>
+    <form className='mx-auto space-y-5 p-6 bg-indigo-300 w-full max-w-90 rounded-3xl'>
       <div className='flex flex-col items-center gap-1.5 text-[1.15rem]'>
         <label htmlFor="newItem" className='font-bold'>Add an item</label>
         <input

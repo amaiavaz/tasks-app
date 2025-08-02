@@ -36,6 +36,7 @@ export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
           onClick={() => setShowForm(true)}
         >New item</button>
       </div>
+
       <AnimatePresence>
         {showForm &&
           <motion.div
@@ -53,32 +54,43 @@ export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
           </motion.div>
         }
       </AnimatePresence>
-      <ul className='space-y-3 py-3 mx-auto w-full max-w-110 rounded-3xl bg-[var(--baselight-color)]'>
-        {task.subtasks?.map((elem) => {
-          return(
-            <li
-              key={elem.id}
-              className={`max-w-100 mx-auto`}
-            >
-              <div className={`w-[90%] mx-auto ${elem.isDone ? '' : 'border-b-1'}`}>
-                <div className={`flex w-full items-center justify-between px-5 py-2 ${elem.isDone ? 'text-gray-400' : ''}`}>
-                  <p className={`font-semibold ${elem.isDone ? 'line-through text-gray-400' : ''}`}>{elem.name}</p>
-                  <div className='flex justify-center gap-6'>
-                    <p className='font-semibold'>{elem.quantity}</p>
-                    <button
-                      className='font-semibold'
-                      onClick={() => toggleDone(elem.id)}
-                    >OK</button>
-                    <button
-                      onClick={() => deleteSubtask(elem.id)}
-                    ><img src="/detele.svg" alt="delete" /></button>
+
+      <motion.ul 
+        className='space-y-3 py-3 mx-auto w-full max-w-110 rounded-3xl bg-[var(--baselight-color)]'
+        layout
+      >
+        <AnimatePresence>
+          {task.subtasks?.map((elem) => {
+            return(
+              <motion.li
+                key={elem.id}
+                className={`max-w-100 mx-auto`}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={`w-[90%] mx-auto ${elem.isDone ? '' : 'border-b-1'}`}>
+                  <div className={`flex w-full items-center justify-between px-5 py-2 ${elem.isDone ? 'text-gray-400' : ''}`}>
+                    <p className={`font-semibold ${elem.isDone ? 'line-through text-gray-400' : ''}`}>{elem.name}</p>
+                    <div className='flex justify-center gap-6'>
+                      <p className='font-semibold'>{elem.quantity}</p>
+                      <button
+                        className='font-semibold hover:text-indigo-900'
+                        onClick={() => toggleDone(elem.id)}
+                      >OK</button>
+                      <button
+                        onClick={() => deleteSubtask(elem.id)}
+                      ><img src="/detele.svg" alt="delete" /></button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
-          )
-        })}
-      </ul>
+              </motion.li>
+            )
+          })}
+        </AnimatePresence>
+      </motion.ul>
     </div>
   )
 }
