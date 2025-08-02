@@ -7,7 +7,7 @@ const initialTask = {
   subtasks: []
 }
 
-export const Header = ({ isAdding, setIsAdding, addTask}) => {
+export const Header = ({ isAdding, setIsAdding, addTask, setSelectedTaskId}) => {
   const [newTask, setNewTask] = useState(initialTask);
   const maxLength = 20;
 
@@ -33,7 +33,10 @@ export const Header = ({ isAdding, setIsAdding, addTask}) => {
         <div className="flex justify-between items-start gap-3 min-h-14">
           {!isAdding ? 
           <>
-            <h1 className="text-2xl font-bold">MyTasks</h1>
+            <h1 
+              className="text-2xl font-bold cursor-pointer hover:underline"
+              onClick={() => setSelectedTaskId(null)}
+            >MyTasks</h1>
             <div>
               <button 
                 className="btn"

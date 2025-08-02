@@ -7,6 +7,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [selectedTaskId, setSelectedTaskId] = useState(null);
 
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
@@ -44,11 +45,14 @@ function App() {
           addTask={addTask}
           isAdding={isAdding}
           setIsAdding={setIsAdding}
+          setSelectedTaskId={setSelectedTaskId}
         />
         <Main 
           tasks={tasks}
           deleteTask={deleteTask}
           updateTask={updateTask}
+          selectedTaskId={selectedTaskId}
+          setSelectedTaskId={setSelectedTaskId}
         />
         <Footer />
       </div>

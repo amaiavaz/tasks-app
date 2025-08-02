@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { Container } from "../container/Container"
 import { TaskList } from "../taskList/TaskList"
 import { SubtaskList } from "../subtaskList/SubtaskList";
 
-export const Main = ({tasks, deleteTask, updateTask}) => {
-  const [selectedTaskId, setSelectedTaskId] = useState(null);
+export const Main = ({tasks, deleteTask, updateTask, selectedTaskId, setSelectedTaskId}) => {
   const selectedTask = tasks.find(task => task.id === selectedTaskId);
 
   return (
