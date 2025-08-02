@@ -1,18 +1,12 @@
 import { useState } from 'react'
 import { FormSubtask } from '../form/FormSubtask'
 
-const initialValues = {
-  title: "",
-  quantity: 0
-}
-
 export const SubtaskList = ({setSelectedTaskId}) => {
-  const [showForm, setShowForm] = useState(true);
-  const [newSubtask, setNewSubtask] = useState(initialValues);
+  const [showForm, setShowForm] = useState(false);
+  const [subtasks, setSubtasks] = useState([]);
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setNewSubtask({...newSubtask, [name]: value});
+  const addSubtask = (elem) => {
+    setSubtasks([...subtasks, elem]);
   }
 
   return (
@@ -30,8 +24,8 @@ export const SubtaskList = ({setSelectedTaskId}) => {
       {showForm &&
         <div className='mx-auto'>
           <FormSubtask 
-            newSubtask={newSubtask}
-            handleChange={handleChange}
+            setShowForm={setShowForm}
+            addSubtask={addSubtask}
           />
         </div>
       }

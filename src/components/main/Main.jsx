@@ -4,7 +4,8 @@ import { TaskList } from "../taskList/TaskList"
 import { SubtaskList } from "../subtaskList/SubtaskList";
 
 export const Main = ({tasks, deleteTask}) => {
-  const [selectedTaskId, setSelectedTaskId] = useState(false);
+  const [selectedTaskId, setSelectedTaskId] = useState(null);
+  const selectedTask = tasks.find(task => task.id === selectedTaskId);
 
   return (
     <main className='flex-1 overflow-auto'>
@@ -17,7 +18,8 @@ export const Main = ({tasks, deleteTask}) => {
           />
           :
           <SubtaskList
-            setSelectedTaskId={setSelectedTaskId} 
+            setSelectedTaskId={setSelectedTaskId}
+            task={selectedTask}
           />
         }
       </Container>
