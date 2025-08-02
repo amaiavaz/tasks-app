@@ -22,8 +22,8 @@ export const TaskList = ({ tasks, deleteTask, setSelectedTaskId }) => {
                     onClick={() => setSelectedTaskId(elem.id)}
                   >{elem.title}</button>
                   <div className="flex justify-center gap-8">
-                    <p>0.5%</p>
-                    <p className="font-semibold">1</p>
+                    {/* <p>0.5%</p> */}
+                    <p className="font-semibold">{elem.subtasks?.length}</p>
                     <button onClick={() => deleteTask(elem.id)}>
                       <img src="/detele.svg" alt="delete" />
                     </button>
