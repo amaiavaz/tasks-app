@@ -1,7 +1,31 @@
+import { useState } from "react";
 import { Container } from "../container/Container";
 
-export const Header = ({newTask, handleInput, isAdding, setIsAdding, addTask, cancelTask}) => {
+const initialTask = {
+  id: "",
+  title: "",
+  subtasks: []
+}
+
+export const Header = ({ isAdding, setIsAdding, addTask}) => {
+  const [newTask, setNewTask] = useState(initialTask);
   const maxLength = 20;
+
+  const handleInput = (e) => {
+    const {value, name} = e.target;
+    setNewTask({...newTask, [name]: value});
+  }
+
+  const onSubmit = () => {
+    const dataTask = {id: Date.now(), title: newTask.title, subtasks: []};
+    addTask(dataTask);
+    setNewTask(initialTask);
+  }
+
+  const cancelTask = () => {
+    setNewTask(initialTask);
+    setIsAdding(false);
+  }
 
   return (
     <header className="py-4">
@@ -35,7 +59,7 @@ export const Header = ({newTask, handleInput, isAdding, setIsAdding, addTask, ca
               <p className="text-sm text-indigo-700 text-right mr-3">{newTask.title.length}/{maxLength}</p>
             </div>
             <button
-              onClick={addTask}
+              onClick={onSubmit}
             ><img src="/check.svg" alt="icon check" /></button>
           </>
           }
