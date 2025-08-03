@@ -6,7 +6,7 @@ export const Main = ({tasks, deleteTask, updateTask, selectedTaskId, setSelected
   const selectedTask = tasks.find(task => task.id === selectedTaskId);
 
   return (
-    <main className='flex-1 overflow-auto'>
+    <main className='flex-1'>
       <Container>
         {!selectedTaskId ? 
           <TaskList 

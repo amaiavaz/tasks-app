@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col h-dvh">
+      <div className="min-h-dvh flex flex-col">
         <Header 
           addTask={addTask}
           isAdding={isAdding}
