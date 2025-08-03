@@ -56,7 +56,7 @@ export const SubtaskList = ({setSelectedTaskId, task, updateTask}) => {
       </AnimatePresence>
 
       <motion.ul 
-        className='space-y-3 py-3 mx-auto w-full max-w-110 rounded-3xl bg-[var(--baselight-color)]'
+        className='space-y-3 py-3 mx-auto w-full max-w-110 rounded-2xl shadow bg-[var(--baselight-color)]'
         layout
       >
         <AnimatePresence>

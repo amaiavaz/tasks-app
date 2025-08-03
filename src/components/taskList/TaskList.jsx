@@ -16,7 +16,7 @@ export const TaskList = ({ tasks, deleteTask, setSelectedTaskId }) => {
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex w-full items-center justify-between rounded-3xl border-3 border-indigo-900 bg-indigo-50 px-6 py-2.5">
+                <div className="flex w-full items-center justify-between rounded-2xl shadow bg-indigo-50 px-6 py-2.5">
                   <button 
                     className="text-[1.25rem] font-semibold hover:underline"
                     onClick={() => setSelectedTaskId(elem.id)}
